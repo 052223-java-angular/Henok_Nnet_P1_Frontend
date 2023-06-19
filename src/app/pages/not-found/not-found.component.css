@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+  }
+  
+  .box {
+    flex: justify-flex;
+    margin-left: 2%;
+    background-color: black;
+  }
+  
+  .box-20 {
+    flex-basis: 25%;
+    background-color: aqua;
+  }
+  
+  .box-50 {
+    flex-basis: 50%;
+    background-color: brown;
+  }
+  

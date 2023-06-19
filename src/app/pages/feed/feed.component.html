@@ -1,0 +1,105 @@
+<div class="card-container">
+
+  <!-- left-card -->
+  <div class="box card-wrapper_1">
+    <!-- Side nav goes here -->
+    
+    <!-- <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>Start</mat-card-subtitle>
+      </mat-card-header>
+            
+    </mat-card> -->
+
+    
+  </div>
+
+  <!-- Middle card list all the posts from the neighbourhood database with format:
+    1 name of the poster 
+    2 CreatedTime
+    3 category
+    4 title
+    5 Description
+    6 Location
+    7 contact
+  ab 
+  a -->
+
+  <div class="box card-wrapper_2">
+    <button mat-button [matMenuTriggerFor]="menu" class="filter-menu"> Filter</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Event</button>
+          <button mat-menu-item>Lost and Found</button>
+          <button mat-menu-item>New Business</button>
+          <button mat-menu-item>Alert </button>
+          <button mat-menu-item>News </button>
+          <button mat-menu-item>Handy Man  </button>
+          
+        </mat-menu>
+    <mat-card>
+      <mat-card-header class="pr-10">
+        <mat-card-title-group><mat-card-title class="text-blue-700"><mat-icon class="pt-1 tex"> person </mat-icon> Name Of Poster </mat-card-title> 01/03/2023</mat-card-title-group>
+      </mat-card-header>
+
+      <mat-card-subtitle class="pl-10" > category </mat-card-subtitle> 
+      <mat-card-title class="pl-10 text-center"> Title </mat-card-title>
+      
+      <mat-card-content>
+        <div class="post-description">
+      
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. . Magnam, vitae sed ducimus minima 
+          neque iste reiciendis aliquid esse pariatur quas deserunt sequi fugiat eius 
+          Magnam, vitae sed ducimus minima neque iste reiciendis aliquid esse pariatur quas deserunt sequi fugiat eius 
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. . Magnam, vitae sed ducimus minima 
+
+          <br>
+          <p class="pl-5"> Contact:  </p>
+          <p class="pl-5"> Location:  </p> <br>
+
+        </div>
+      </mat-card-content>
+      <!-- List all coments here -->
+      <cdk-virtual-scroll-viewport itemSize="30" class="comments">
+        <mat-card-subtitle><mat-icon class="pt-1"> person </mat-icon> Tester002 </mat-card-subtitle>
+            <div class="comment-items">
+
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. . Magnam, vitae sed ducimus minima 
+            neque iste reiciendis aliquid esse pariatur quas deserunt sequi fugiat eius 
+            Magnam, vitae sed ducimus minima neque iste reiciendis aliquid esse pariatur quas deserunt sequi fugiat eius 
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. . Magnam, vitae sed ducimus minima 
+            </div>
+        <mat-card-subtitle><mat-icon class="pt-1"> person </mat-icon> Tester002 </mat-card-subtitle>
+        
+        <div class="comment-items">
+
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. . Magnam, vitae sed ducimus minima 
+          neque iste reiciendis aliquid esse pariatur quas deserunt sequi fugiat eius 
+          Magnam, vitae sed ducimus minima neque iste reiciendis aliquid esse pariatur quas deserunt sequi fugiat eius 
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. . Magnam, vitae sed ducimus minima 
+          </div>
+      
+      </cdk-virtual-scroll-viewport>
+        <mat-card-actions class="buttons">
+          <button mat-button> 1 Likes</button>
+          <button mat-button>Comment</button>
+        </mat-card-actions>
+         <br>
+    </mat-card>
+      
+  </div>
+
+
+  <!-- right card -->
+  <div class="box card-wrapper_3">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Actions Buttons</mat-card-title>
+        <mat-card-subtitle>Start</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

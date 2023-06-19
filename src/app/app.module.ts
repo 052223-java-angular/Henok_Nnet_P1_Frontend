@@ -13,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { FeedComponent } from './pages/feed/feed.component';
+import { TermsNconditionsComponent } from './pages/terms-nconditions/terms-nconditions.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +25,18 @@ import { ToastrModule } from 'ngx-toastr';
     AboutComponent,
     NotFoundComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+
+    TermsNconditionsComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule, // required animations module
+    FeedComponent,
+    BrowserAnimationsModule, // required animations module for material ui
     ToastrModule.forRoot({
       timeOut: 5500,
       positionClass: 'toast-bottom-right',

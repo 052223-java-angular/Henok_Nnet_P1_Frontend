@@ -1,0 +1,22 @@
+.left-div {
+    float: left;
+    margin-top: 90px;
+    margin-left: 130px;
+    width: 50%;
+    height: 200px;
+  }
+  
+  .right-div {
+    float: right;
+    margin-top: 90px;
+    margin-left: 130px;
+    width: 50%;
+    height: 200px;
+  }
+  
+  h2 {
+    text-align: center;
+    padding-top: 80px;
+    font-family: Arial, sans-serif;
+  }
+  
