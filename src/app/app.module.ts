@@ -10,7 +10,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
+import { AuthInterceptor } from './auth-interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FeedComponent } from './pages/feed/feed.component';
@@ -41,10 +42,14 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
       timeOut: 5500,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
-    }), // ToastrModule added
+    }), 
 
   ],
-  providers: [],
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginPayload } from 'src/app/models/Login-Payload';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { CookieService } from 'ngx-cookie-service';
+import {Auth } from 'src/app/models/Auth';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,8 @@ export class LoginComponent implements OnInit{
 
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthServiceService, private router: Router, private toster: ToastrService
+  constructor(private fb: FormBuilder, private authService: AuthServiceService, private router: Router, 
+              private toster: ToastrService, private cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
@@ -48,12 +51,16 @@ export class LoginComponent implements OnInit{
         };
 
         this.authService.login(payload).subscribe({
-          next: () => {
+          next: (response: Auth) => {
+            const token = response.token;
+            localStorage.setItem('auth-token', token);
             this.toster.success('Login is successful');
+            // alert("Login is Successful!!")
             this.router.navigate(['/feed']);
           },
           error: (error) => {
             this.toster.error(error.error.message);
+            alert(error.error.message);
             
           }
         });

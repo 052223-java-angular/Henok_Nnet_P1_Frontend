@@ -39,7 +39,7 @@
 
   .comments {
     margin-left: 10%;
-    height: 200px;
+    height: 150px;
     width: 85%;
   }
 
@@ -48,4 +48,12 @@
     justify-content: flex-end;
   }
 
-  
+.textarea-1{
+  flex: relative;
+  margin-top: 10px;
+  width: 80%;
+  height: 30px;
+  margin-right: 20px;
+  margin-left: 60px;
+
+}

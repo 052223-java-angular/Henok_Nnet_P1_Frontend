@@ -1,6 +1,6 @@
 export interface Auth{
-    id: String;
-    username: String;
-    role: String;
-    token: String;
+    id: string;
+    username: string;
+    role: string;
+    token: string;
 }
