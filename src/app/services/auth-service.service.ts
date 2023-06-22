@@ -4,7 +4,9 @@ import { RegisterPayload } from '../models/register-payload';
 import { Observable } from 'rxjs';
 import { Auth } from '../models/Auth';
 import { LoginPayload } from '../models/Login-Payload';
-import { FeedPlayload } from '../models/Feed-Payload';
+import { FeedPayload } from '../models/Feed-Payload';
+import { CommentPayload } from '../models/Comment-Payload';
+import { PostId } from '../models/PostId';
 
 @Injectable({
   providedIn: 'root'
@@ -30,9 +32,18 @@ export class AuthServiceService {
   }
 
   //get feed from the back end and send the session token to the back end
-  feed():  Observable<FeedPlayload>{
+  feed():  Observable<FeedPayload>{
     const headers = new HttpHeaders().set('auth-token', `${this.token}`);
-    return this.http.get<FeedPlayload>(`${this.baseUrl}/posts/feed`, { headers });
+    return this.http.get<FeedPayload>(`${this.baseUrl}/posts/feed`, { headers });
+  }
+
+  comments(postId: PostId):  Observable<CommentPayload>{
+    const headers = new HttpHeaders().set('auth-token', `${this.token}`);
+    const url = `${this.baseUrl}/reviews/retrive`;
+    const body = { postId: postId };
+
+    // return this.http.get<CommentPayload>(url, body, { headers });
+    return this.http.post<CommentPayload>(url, body, { headers: headers });
   }
 
 }

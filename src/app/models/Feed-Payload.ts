@@ -1,4 +1,4 @@
-export interface FeedPlayload{
+export interface FeedPayload{
     postId: String;
     title: String;
     category: String;

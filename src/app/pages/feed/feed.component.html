@@ -31,48 +31,52 @@
           <button mat-menu-item>Other  </button>
         </mat-menu>
 
-        
+    <ng-container *ngFor="let post of feedPayload">    
     <mat-card>  
       <mat-card-header class="pr-10">
-        <mat-card-title-group><mat-card-title class="text-blue-700"><mat-icon class="pt-1 tex"> person </mat-icon>  </mat-card-title> dateCreated </mat-card-title-group>
+        <mat-card-title-group><mat-card-title class="text-blue-700"><mat-icon class="pt-1 tex"> person </mat-icon> {{ post.user_name }} </mat-card-title> {{ post.postedTime }} </mat-card-title-group>
       </mat-card-header>
 
-      <mat-card-subtitle class="pl-10" > category </mat-card-subtitle> 
-      <mat-card-title class="pl-10 text-center"> Title </mat-card-title>
+      <mat-card-subtitle class="pl-10" > {{ post.category }} </mat-card-subtitle> 
+      <mat-card-title class="pl-10 text-center"> {{post.title}} </mat-card-title>
       
       <mat-card-content>
         <div class="post-description">
       
-          description
+          {{post.description}}
 
           <br>
-          <p class="pl-5"> Contact:  </p>
-          <p class="pl-5"> Location:  </p> <br>
+          <p class="pl-5"> Contact: {{post.contact}}  </p>
+          <p class="pl-5"> Location: {{post.location}} </p> <br>
 
         </div>
       </mat-card-content>
       <!-- List all coments here -->
+      <ng-container *ngFor="let comments of commentPayload">   
       <cdk-virtual-scroll-viewport itemSize="30" class="comments">
-        <mat-card-subtitle><mat-icon class="pt-1"> person </mat-icon> commenter name </mat-card-subtitle>
+        <mat-card-subtitle><mat-icon class="pt-1"> person </mat-icon> {{comments.username}} </mat-card-subtitle>
             <div class="comment-items">
 
-            comment 
+            {{comments.comment}} 
 
             </div>   
       </cdk-virtual-scroll-viewport>
+    </ng-container>
     
       <!-- <div class="textarea"> -->
         <form class=" flex flex-col items-center">
             <input class="textarea-1 mt-0 pt-0 bg-slate-300 transition focus:ease-out focus:scale-110 duration-300" type="text" placeholder="comment" formControlName="comment"> 
         </form>
 
+        
         <mat-card-actions class="buttons">
-          <button mat-button> 1 Likes</button>
+          <button mat-button>  Likes</button>
           <button mat-button>Comment</button>
         </mat-card-actions>
       <!-- </div> -->       
          <br> <hr> <hr><hr><hr><hr><hr><hr><hr><hr><hr>
         </mat-card>
+      </ng-container>
   </div>
 
 
