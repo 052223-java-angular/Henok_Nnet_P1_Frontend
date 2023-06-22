@@ -6,7 +6,7 @@ import { Auth } from '../models/Auth';
 import { LoginPayload } from '../models/Login-Payload';
 import { FeedPayload } from '../models/Feed-Payload';
 import { CommentPayload } from '../models/Comment-Payload';
-import { PostId } from '../models/PostId';
+import { AddComment } from '../models/Add-Comment';
 
 @Injectable({
   providedIn: 'root'
@@ -37,13 +37,21 @@ export class AuthServiceService {
     return this.http.get<FeedPayload>(`${this.baseUrl}/posts/feed`, { headers });
   }
 
-  comments(postId: PostId):  Observable<CommentPayload>{
+  comments():  Observable<CommentPayload>{
     const headers = new HttpHeaders().set('auth-token', `${this.token}`);
     const url = `${this.baseUrl}/reviews/retrive`;
-    const body = { postId: postId };
+    // const body = { postId: postId };
 
-    // return this.http.get<CommentPayload>(url, body, { headers });
-    return this.http.post<CommentPayload>(url, body, { headers: headers });
+    return this.http.post<CommentPayload>(url, { headers: headers });
   }
 
+  
+  submitComment(payload: AddComment): Observable<void> {
+    const headers = new HttpHeaders().set('auth-token', `${this.token}`);
+    const url = `${this.baseUrl}/reviews/add`;
+  
+    return this.http.post<void>(url, payload, { headers: headers });
+  }
+  
+  
 }

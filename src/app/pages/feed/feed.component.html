@@ -3,7 +3,6 @@
   <!-- left-card -->
   <div class="box card-wrapper_1">
     
-
     
   </div>
 
@@ -51,27 +50,29 @@
 
         </div>
       </mat-card-content>
-      <!-- List all coments here -->
-      <ng-container *ngFor="let comments of commentPayload">   
+      <!-- List all coments here --> 
       <cdk-virtual-scroll-viewport itemSize="30" class="comments">
+        <ng-container *ngFor="let comments of post.reviews">  
+  
         <mat-card-subtitle><mat-icon class="pt-1"> person </mat-icon> {{comments.username}} </mat-card-subtitle>
             <div class="comment-items">
 
             {{comments.comment}} 
 
             </div>   
+          </ng-container>
       </cdk-virtual-scroll-viewport>
-    </ng-container>
+    
     
       <!-- <div class="textarea"> -->
         <form class=" flex flex-col items-center">
-            <input class="textarea-1 mt-0 pt-0 bg-slate-300 transition focus:ease-out focus:scale-110 duration-300" type="text" placeholder="comment" formControlName="comment"> 
+            <input class="textarea-1 mt-0 pt-0 bg-slate-300 transition focus:ease-out focus:scale-110 duration-300" type="text" placeholder="comment" 
+            name="comment" [(ngModel)]="commentText"> 
         </form>
 
-        
         <mat-card-actions class="buttons">
-          <button mat-button>  Likes</button>
-          <button mat-button>Comment</button>
+          <button mat-button> Likes </button>
+          <button mat-button (click)="submitComment(post.postId)">Comment</button>
         </mat-card-actions>
       <!-- </div> -->       
          <br> <hr> <hr><hr><hr><hr><hr><hr><hr><hr><hr>

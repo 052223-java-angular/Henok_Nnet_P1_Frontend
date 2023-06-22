@@ -4,14 +4,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatFormFieldModule, matFormFieldAnimations } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { FeedPayload } from 'src/app/models/Feed-Payload';
 import { CommentPayload } from 'src/app/models/Comment-Payload';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { PostId } from 'src/app/models/PostId';
+import { AddComment } from 'src/app/models/Add-Comment';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 
 
 @Component({
@@ -19,49 +20,64 @@ import { PostId } from 'src/app/models/PostId';
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.css'],
   standalone: true,
-  imports: [MatButtonModule, MatCardModule, MatIconModule, MatMenuModule, ScrollingModule, CommonModule, MatFormFieldModule]
+  imports: [
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatMenuModule,
+    ScrollingModule,
+    CommonModule,
+    MatFormFieldModule,
+    FormsModule // Add FormsModule
+  ]
 })
 export class FeedComponent implements OnInit {
   feedPayload!: FeedPayload[];
   commentPayload!: CommentPayload[];
-  posiId!: PostId;
+  commentText!: string;
+  // postId!: string;
+  addComment!: AddComment;
 
-
-  constructor(private authService: AuthServiceService, private toaster: ToastrService, private router: Router) {}
+  constructor(
+    private authService: AuthServiceService,
+    private toaster: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getFeedPayload();
-    this.getCommentPayload();
   }
 
   getFeedPayload(): void {
-    this.authService.feed().subscribe(
-      (payload: any) => {
-        this.feedPayload = payload;
-        this.posiId = payload.postId;
-        this.getCommentPayload();
-        this.toaster.success('Successful');
+    this.authService.feed().subscribe({
+      next: resp => {
+        console.log(resp);
+        if (Array.isArray(resp)) {
+          this.feedPayload = resp;
+        } else {
+          this.feedPayload = [resp];
+        }
       },
-      (error) => {
-        this.toaster.error(error.error.message);
-        alert(error.error.message);
-        this.router.navigate(['**']);
+      error: e => {
+        console.log(e);
       }
-    );
+    });
   }
 
-  getCommentPayload(): void{
-    this.authService.comments(this.posiId).subscribe(
-      (payload: any) => {
-       
-        this.commentPayload = payload;
-        this.toaster.success('Successful');
+  submitComment(postId: string): void {
+    const payload: AddComment = {
+      postId: postId,
+      comment: this.commentText
+    };
+
+    this.authService.submitComment(payload).subscribe({
+      next: resp => {
+        this.toaster.success('commented successfully!!');
       },
-      (error) =>{
-        this.toaster.error(error.error.message);
-        alert(error.error.message);
-        this.router.navigate(['**']);
+      error: e => {
+        alert("can not comment here!")
       }
-    );
+    });
+    this.commentText = '';
   }
 }

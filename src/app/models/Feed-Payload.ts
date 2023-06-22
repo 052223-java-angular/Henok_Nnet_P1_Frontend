@@ -1,5 +1,7 @@
+import { CommentPayload } from "./Comment-Payload";
+
 export interface FeedPayload{
-    postId: String;
+    postId: string;
     title: String;
     category: String;
     description: String;
@@ -8,4 +10,5 @@ export interface FeedPayload{
     neighborhoodName: String;
     contact: String;
     user_name: String;
+    reviews: CommentPayload[];
 }
