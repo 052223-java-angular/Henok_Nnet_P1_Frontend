@@ -12,7 +12,10 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AddComment } from 'src/app/models/Add-Comment';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+
+
 
 
 @Component({
@@ -28,20 +31,19 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
     ScrollingModule,
     CommonModule,
     MatFormFieldModule,
-    FormsModule // Add FormsModule
+    FormsModule,
   ]
 })
 export class FeedComponent implements OnInit {
   feedPayload!: FeedPayload[];
   commentPayload!: CommentPayload[];
   commentText!: string;
-  // postId!: string;
   addComment!: AddComment;
 
   constructor(
     private authService: AuthServiceService,
     private toaster: ToastrService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {

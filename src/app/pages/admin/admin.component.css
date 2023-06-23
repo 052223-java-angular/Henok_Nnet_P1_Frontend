@@ -1,4 +1,4 @@
-  .card-container {
+.card-container {
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
@@ -93,4 +93,37 @@
 
 .side-nav li a:hover {
   color: #555;
+}
+
+
+.table-header {
+  padding: 10px;
+  margin-right: 10px; 
+  background-color: #e0e0e0; 
+  color: #333; 
+  font-weight: bold; 
+}
+
+.table-card {
+  display: inline-block;
+  width: 96%; 
+  margin: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  background-color: #e0e0e0;
+  color: #333; 
+  font-weight: bold;
 }

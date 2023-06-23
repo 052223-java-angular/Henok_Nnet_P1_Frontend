@@ -17,6 +17,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { FeedComponent } from './pages/feed/feed.component';
 import { TermsNconditionsComponent } from './pages/terms-nconditions/terms-nconditions.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { PostComponent } from './pages/post/post.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { ManageComponent } from './pages/manage/manage.component';
+
 
 @NgModule({
   declarations: [
@@ -27,9 +34,12 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
     NotFoundComponent,
     RegisterComponent,
     LoginComponent,
-
     TermsNconditionsComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    SidebarComponent,
+    ProfileComponent,
+    PostComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -37,7 +47,9 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
     ReactiveFormsModule,
     HttpClientModule,
     FeedComponent,
-    BrowserAnimationsModule, // required animations module for material ui
+    BrowserAnimationsModule,
+    AdminComponent,
+    ManageComponent,
     ToastrModule.forRoot({
       timeOut: 5500,
       positionClass: 'toast-bottom-right',

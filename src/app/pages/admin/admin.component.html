@@ -1,0 +1,67 @@
+<div class="card-container">
+
+    <!-- left-card -->
+    <div class="box card-wrapper_1">
+      <div class="side-nav">
+        <ul class="sidebar-menu">
+          <li><button mat-button routerLink="/" class="transi hover: ease-out hover:scale-110 duration-300">Home</button></li>
+          <li><button mat-button routerLink="/profile" class="transi hover: ease-out hover:scale-110 duration-300">Profile</button></li>
+          <li><button mat-button routerLink="/manage" class="transi hover: ease-out hover:scale-110 duration-300">Manage</button></li>
+          <li><button mat-button routerLink="/post" class="transi hover: ease-out hover:scale-110 duration-300">Post</button></li>
+          <li><button mat-button routerLink="/feed" class="transi hover: ease-out hover:scale-110 duration-300">Feed</button></li>
+          
+          <br><br><br><br><br><br><br><br>
+          <li class="hover:underline hover:underline-offset-4 transi hover: ease-out hover:scale-110 duration-300"><a routerLink="/login">Logout</a></li>
+          
+        </ul>
+      </div>
+   
+    </div>
+  
+    <div class="box card-wrapper_2">
+      <mat-card class="table-card">  
+        
+        <mat-card-content>
+          <table>
+            <thead>
+              <tr>
+                <th class="table-header">Neighborhood ID</th>
+                <th class="table-header">Neighborhood Name</th>
+                <th class="table-header">ZIP Code</th>
+                <th class="table-header">Country</th>
+                <th class="table-header">Census</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let hood of allHoods">
+                <td>{{ hood.neighborhoodId }}</td>
+                <td>{{ hood.neighborhoodName }}</td>
+                <td>{{ hood.zipCode }}</td>
+                <td>{{ hood.country }}</td>
+                <td>{{ hood.census }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-card-content>
+           
+           <br> <hr> <hr><hr><hr><hr><hr><hr><hr><hr><hr>
+          </mat-card>
+
+    </div>
+  
+  
+    <!-- right card -->
+    <div class="box card-wrapper_3">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Promotion Goes here ...</mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+          <button mat-button></button>
+          <button mat-button></button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  

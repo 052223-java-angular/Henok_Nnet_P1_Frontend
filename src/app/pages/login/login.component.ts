@@ -55,8 +55,12 @@ export class LoginComponent implements OnInit{
             const token = response.token;
             localStorage.setItem('auth-token', token);
             this.toster.success('Login is successful');
-            // alert("Login is Successful!!")
-            this.router.navigate(['/feed']);
+            
+            if (response.role === 'ADMIN') {
+              this.router.navigate(['/admin']);
+            } else if (response.role === 'USER') {
+              this.router.navigate(['/feed']);
+            }
           },
           error: (error) => {
             this.toster.error(error.error.message);
