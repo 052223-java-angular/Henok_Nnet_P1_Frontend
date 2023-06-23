@@ -76,6 +76,14 @@ export class AuthServiceService {
     
     return this.http.delete<void>(url, { headers: headers, body: payload });
   }
+
+
+  promoteUser(payload: UserPayload): Observable<void> {
+    const headers = new HttpHeaders().set('auth-token', this.token || '');
+    const url = `${this.baseUrl}/admin/update`;
+  
+    return this.http.put<void>(url, payload, { headers: headers });
+  }
   
   
   

@@ -149,4 +149,17 @@ th {
   .delete-button:hover {
     background-color: #ff0000;
   }
+
+  .promote-button {
+    padding-left: 2px;
+    padding: 6px 12px;
+    background-color: #dcc834;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
   
+  .promote-button:hover {
+    background-color: #dcc834;
+  }

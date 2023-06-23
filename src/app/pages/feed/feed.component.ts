@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,28 +13,33 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AddComment } from 'src/app/models/Add-Comment';
 import { FormsModule } from '@angular/forms';
+import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 import { RouterModule, Routes } from '@angular/router';
 
 
 
 
 @Component({
-  selector: 'app-feed',
-  templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.css'],
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatMenuModule,
-    ScrollingModule,
-    CommonModule,
-    MatFormFieldModule,
-    FormsModule,
-  ]
+    selector: 'app-feed',
+    templateUrl: './feed.component.html',
+    styleUrls: ['./feed.component.css'],
+    standalone: true,
+    imports: [
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        MatMenuModule,
+        ScrollingModule,
+        CommonModule,
+        MatFormFieldModule,
+        FormsModule,
+        SidebarComponent
+    ]
 })
 export class FeedComponent implements OnInit {
+  // @ViewChild(SidebarComponent)
+  sidebarComponent!: SidebarComponent;
+  
   feedPayload!: FeedPayload[];
   commentPayload!: CommentPayload[];
   commentText!: string;

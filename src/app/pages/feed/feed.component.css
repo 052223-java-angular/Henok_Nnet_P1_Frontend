@@ -4,13 +4,12 @@
     margin-top: 30px;
   }
   
-  .card-wrapper_1 {
+  /* .card-wrapper_1 {
     flex: relative ;
     width: 20%;
-    /* margin-right: 10px; */
-    margin-left: 80px;
+    margin-left: 15px;
     
-  }
+  } */
   
   .card-wrapper_2 {
     flex: relative ;
@@ -59,38 +58,3 @@
 
 }
 
-
-/* side nav */
-
-.side-nav {
-  display: flex;
-  padding-left: 40px;
-  font-size: medium;
-  padding-top: 20px;
-  background-color: #f2f2f2;
-  width: 250px;
-  height: 10%;
-  /* position: fixed; */
-  left: 10px;
-  top: 100px;
-}
-
-.side-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.side-nav li {
-  padding: 10px;
-}
-
-.side-nav li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-}
-
-.side-nav li a:hover {
-  color: #555;
-}

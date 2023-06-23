@@ -1,7 +1,9 @@
 <div class="card-container">
 
     <!-- left-card -->
-    <div class="box card-wrapper_1">
+    <app-sidebar></app-sidebar>
+
+    <!-- <div class="box card-wrapper_1">
       <div class="side-nav">
         <ul class="sidebar-menu">
           <li><button mat-button routerLink="/" class="transi hover: ease-out hover:scale-110 duration-300">Home</button></li>
@@ -16,7 +18,7 @@
         </ul>
       </div>
    
-    </div>
+    </div> -->
   
     <div class="box card-wrapper_2">
         <mat-card class="table-card">
@@ -45,6 +47,8 @@
                   <td>{{ user.neighborhoodId }}</td>
                   <td>
                     <button class="delete-button" (click)="deleteUser(user.id)">Delete</button>
+                    <button class="promote-button" (click)="promoteUser(user.id)">Promote</button>
+
                   </td>
                 </tr>
               </tbody>
