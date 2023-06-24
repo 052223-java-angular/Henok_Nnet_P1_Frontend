@@ -1,0 +1,7 @@
+.toast-success {
+    @apply my-10;
+}
+
+.toast-errors {
+    @apply my-10;
+}

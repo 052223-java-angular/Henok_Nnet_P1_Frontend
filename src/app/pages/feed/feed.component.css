@@ -1,0 +1,60 @@
+  .card-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+  /* .card-wrapper_1 {
+    flex: relative ;
+    width: 20%;
+    margin-left: 15px;
+    
+  } */
+  
+  .card-wrapper_2 {
+    flex: relative ;
+    width: 70%;
+    margin-right: 20px;
+    margin-left: 60px;
+  }
+  
+  .card-wrapper_3 {
+    flex: relative ;
+    width: 45%;
+    margin-right: 20px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    justify-content: right;
+  }
+
+  .card-content{
+    height: 0px; 
+    overflow-y: auto;
+  }
+
+  .comments {
+    margin-left: 10%;
+    height: 150px;
+    width: 85%;
+    
+  }
+
+  .filter-menu{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+.textarea-1{
+  flex: relative;
+  margin-top: 10px;
+  width: 80%;
+  height: 30px;
+  margin-right: 20px;
+  margin-left: 60px;
+
+}
+
