@@ -10,6 +10,7 @@ import { AddComment } from '../models/Add-Comment';
 import { AllHoods } from '../models/Hoods';
 import { AllUsers } from '../models/AllUsers';
 import { UserPayload } from '../models/UserPayload';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -17,7 +18,7 @@ import { UserPayload } from '../models/UserPayload';
 })
 export class AuthServiceService {
 
-  baseUrl = 'http://localhost:8080/nnet/api';
+  baseUrl = environment.apibaseUrl;
   
 
   constructor(private http: HttpClient) { }

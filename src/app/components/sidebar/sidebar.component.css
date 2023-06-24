@@ -19,12 +19,12 @@
   margin-right: 20px;
 }
 
-.buttons {
+/* .buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
   justify-content: right;
-}
+} */
 
 .card-content{
   height: 0px; 
@@ -39,7 +39,6 @@ padding-top: 20px;
 background-color: #f2f2f2;
 width: 250px;
 height: 10%;
-/* position: fixed; */
 left: 10px;
 top: 100px;
 }
