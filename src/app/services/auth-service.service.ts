@@ -19,7 +19,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthServiceService {
 
-  baseUrl = 'nnet-1-env.eba-sadmddsb.us-east-1.elasticbeanstalk.com'; 
+  baseUrl = 'http://nnet-1-env.eba-sadmddsb.us-east-1.elasticbeanstalk.com/nnet/api';  
   // baseUrl = environment.apibaseUrl;
   
 
