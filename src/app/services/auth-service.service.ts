@@ -13,12 +13,14 @@ import { UserPayload } from '../models/UserPayload';
 import { environment } from 'src/environments/environment';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
 
-  baseUrl = environment.apibaseUrl;
+  baseUrl = 'nnet-1-env.eba-sadmddsb.us-east-1.elasticbeanstalk.com/nnet/api'; 
+  // baseUrl = environment.apibaseUrl;
   
 
   constructor(private http: HttpClient) { }
