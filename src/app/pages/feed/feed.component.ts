@@ -14,10 +14,8 @@ import { CommonModule } from '@angular/common';
 import { AddComment } from 'src/app/models/Add-Comment';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
-import { RouterModule, Routes } from '@angular/router';
-
-
-
+import { UserName } from 'src/app/models/UserName';
+import { DeletePayload } from 'src/app/models/DeletePayload';
 
 @Component({
     selector: 'app-feed',
@@ -42,8 +40,11 @@ export class FeedComponent implements OnInit {
   
   feedPayload!: FeedPayload[];
   commentPayload!: CommentPayload[];
+  username!: UserName;
   commentText!: string;
   addComment!: AddComment;
+  currentUser!: String;
+  currentUserRole!: String;
 
   constructor(
     private authService: AuthServiceService,
@@ -53,7 +54,19 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFeedPayload();
+    this.getUserName();
   }
+
+
+  getUserName(): void {
+    this.authService.getuserName().subscribe(
+      (payload: UserName) => {
+        this.currentUser = payload.username;
+        this.currentUserRole = payload.userRole;
+      }
+    );
+  }
+   
 
   getFeedPayload(): void {
     this.authService.feed().subscribe({
@@ -80,6 +93,7 @@ export class FeedComponent implements OnInit {
     this.authService.submitComment(payload).subscribe({
       next: resp => {
         this.toaster.success('commented successfully!!');
+        window.location.reload();
       },
       error: e => {
         alert("can not comment here!")
@@ -87,4 +101,40 @@ export class FeedComponent implements OnInit {
     });
     this.commentText = '';
   }
+
+  deleteComment(commentId: string) {
+    const payload : DeletePayload = {
+      postId: '',
+      commentId: commentId,
+    } 
+  this.authService.deleteComment(payload).subscribe({
+    next: resp => {
+      alert("Deleted Successfully");
+      this.toaster.success('deleted successfully!!');
+      window.location.reload();
+    },
+    error: e => {
+      alert("can not delete this!")
+    }
+  });
+}
+
+
+  deletePost(postId: string) {
+    const payload : DeletePayload = {
+      commentId: '',
+      postId: postId,
+    } 
+    this.authService.deletePost(payload).subscribe({
+      next: resp => {
+        alert("Deleted Sucessfully!!!")
+        this.toaster.success('deleted successfully!!');
+        window.location.reload();
+      },
+      error: e => {
+        alert("can not delete this!")
+      }
+    
+  });
+}
 }

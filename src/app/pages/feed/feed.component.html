@@ -30,7 +30,29 @@
           <button mat-menu-item>Other  </button>
         </mat-menu>
 
-    <ng-container *ngFor="let post of feedPayload">    
+        <!-- <ng-container *ngIf="feedPayload.length === 0">
+          <div class="no-posts-message">
+            <mat-card-title class="pl-10 text-center"> 
+            No posts from your neighborhood. Share the following link to your neighbors and invite them to the community platform.
+            <br><br>
+            <a href="https://bit.ly/Nnet-env">https://bit.ly/Nnet-env </a>
+          
+          </mat-card-title>
+          </div>
+        </ng-container> -->
+        <ng-container *ngIf="feedPayload && feedPayload.length === 0">
+          <div class="no-posts-message">
+            <mat-card-title class="pl-10 text-center"> 
+              No posts from your neighborhood. Share the following link to your neighbors and invite them to the community platform.
+              <br><br>
+              <a href="https://bit.ly/Nnet-env">https://bit.ly/Nnet-env</a>
+            </mat-card-title>
+          </div>
+        </ng-container>
+        
+
+    <ng-container *ngFor="let post of feedPayload"> 
+        
     <mat-card>  
       <mat-card-header class="pr-10">
         <mat-card-title-group><mat-card-title class="text-blue-700"><mat-icon class="pt-1 tex"> person </mat-icon> {{ post.user_name }} </mat-card-title> {{ post.postedTime }} </mat-card-title-group>
@@ -57,7 +79,15 @@
         <mat-card-subtitle><mat-icon class="pt-1"> person </mat-icon> {{comments.username}} </mat-card-subtitle>
             <div class="comment-items">
 
-            {{comments.comment}} 
+              <div class="comment">
+                <div class="comment-text">
+                  {{comments.comment}}
+                </div>
+                <button mat-icon-button *ngIf="comments.username === currentUser || post.user_name === currentUser || currentUserRole === 'ADMIN'"
+                        (click)="deleteComment(comments.commentId)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
 
             </div>   
           </ng-container>
@@ -73,6 +103,10 @@
         <mat-card-actions class="buttons">
           <button mat-button> Likes </button>
           <button mat-button (click)="submitComment(post.postId)">Comment</button>
+            <button mat-icon-button *ngIf="post.user_name === currentUser || currentUserRole === 'ADMIN'"
+                    (click)="deletePost(post.postId)">
+              <mat-icon>delete</mat-icon>
+            </button>
         </mat-card-actions>
       <!-- </div> -->       
          <br> <hr> <hr><hr><hr><hr><hr><hr><hr><hr><hr>
