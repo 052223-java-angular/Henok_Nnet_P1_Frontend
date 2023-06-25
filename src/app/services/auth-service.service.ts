@@ -13,6 +13,8 @@ import { UserPayload } from '../models/UserPayload';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { PostPayload } from '../models/Post';
+import { UserName } from '../models/UserName';
+import { DeletePayload } from '../models/DeletePayload';
 
 
 
@@ -20,9 +22,8 @@ import { PostPayload } from '../models/Post';
   providedIn: 'root'
 })
 export class AuthServiceService {
-
-  baseUrl = 'http://nnet-1-env.eba-sadmddsb.us-east-1.elasticbeanstalk.com/nnet/api';  
-  // baseUrl = environment.apibaseUrl;
+ 
+  baseUrl = environment.apibaseUrl;
   // baseUrl = 'http://localhost:8080/nnet/api';
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -96,6 +97,29 @@ export class AuthServiceService {
   
     return this.http.post<void>(url, payload, { headers: headers });
   }
+
+  getuserName():  Observable<UserName>{
+    const headers = new HttpHeaders().set('auth-token', `${this.token}`);
+    const url = `${this.baseUrl}/user/username`;
+
+    return this.http.get<UserName>(url, { headers: headers });
+  }
+
+  deletePost(payload: DeletePayload): Observable<void> {
+    const headers = new HttpHeaders().set('auth-token', `${this.token}`);
+    const url = `${this.baseUrl}/posts/deletePost`;
+    
+    return this.http.delete<void>(url, { headers: headers, body: payload });
+  }
+
+  deleteComment(payload: DeletePayload): Observable<void> {
+    const headers = new HttpHeaders().set('auth-token', `${this.token}`);
+    const url = `${this.baseUrl}/posts/deletecomment`;
+    
+    return this.http.delete<void>(url, { headers: headers, body: payload });
+  }
+  
+  
   
   
   

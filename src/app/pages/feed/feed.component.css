@@ -58,3 +58,14 @@
 
 }
 
+.comment {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+  padding: auto;
+}
+
+.comment-text {
+  flex-grow: 1;
+}
+

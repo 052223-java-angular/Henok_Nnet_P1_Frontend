@@ -83,8 +83,8 @@ export class PostComponent implements OnInit{
         this.authService.createPost(payload).subscribe({
           next: () => {
             console.log(payload);
-            this.toster.success('Registration is successful');
-            alert("Posted is Successfully!!");
+            this.toster.success('Posted successfully');
+            alert("Posted Successfully!!");
             this.router.navigate(['/feed']);
           },
           error: (error) => {
