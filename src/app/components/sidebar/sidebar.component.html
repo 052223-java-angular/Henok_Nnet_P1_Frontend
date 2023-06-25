@@ -3,12 +3,18 @@
   <div class="box card-wrapper_1">
     <div class="side-nav">
       <ul class="sidebar-menu">
-        <li><button mat-button routerLink="/" class="transi hover: ease-out hover:scale-110 duration-300">Home</button></li>
-        <li><button mat-button routerLink="/profile" class="transi hover: ease-out hover:scale-110 duration-300">Profile</button></li>
-        <li><button mat-button routerLink="/post" class="transi hover: ease-out hover:scale-110 duration-300">Post</button></li>
-        <li><button mat-button routerLink="/feed" class="transi hover: ease-out hover:scale-110 duration-300">Feed</button></li>
+        
+        <li><button mat-button class="transi hover: ease-out hover:scale-110 duration-300" (click)="homeButtonClick()">Nnet</button></li>
+
+        <li><button mat-button class="transi hover: ease-out hover:scale-110 duration-300" (click)="feedButtonClick()">Feed</button></li>
+
+        <li><button mat-button class="transi hover: ease-out hover:scale-110 duration-300" (click)="postButtonClick()">Post</button></li>
+
+        <li><button mat-button class="transi hover: ease-out hover:scale-110 duration-300" (click)="profileButtonClick()">Profile</button></li>
+
         <br><br><br><br><br><br><br><br>
-        <li class="hover:underline hover:underline-offset-4 transi hover: ease-out hover:scale-110 duration-300"><a routerLink="/login">Logout</a></li>
+        <li><button class="bg-black px-3 py-1 text-white rounded-md shadow-xl transi hover: ease-out hover:scale-110 duration-300" (click)="logoutButtonClick()">Logout</button></li>
+        
         
       </ul>
     </div>

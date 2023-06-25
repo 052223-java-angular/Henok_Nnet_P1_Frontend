@@ -37,7 +37,7 @@ import { ManageComponent } from './pages/manage/manage.component';
     TermsNconditionsComponent,
     PrivacyPolicyComponent,
     ProfileComponent,
-    PostComponent,
+  
     
   ],
   imports: [
@@ -48,8 +48,9 @@ import { ManageComponent } from './pages/manage/manage.component';
     FeedComponent,
     BrowserAnimationsModule,
     AdminComponent,
-    SidebarComponent,
     ManageComponent,
+    SidebarComponent,
+    PostComponent,
     ToastrModule.forRoot({
       timeOut: 5500,
       positionClass: 'toast-bottom-right',

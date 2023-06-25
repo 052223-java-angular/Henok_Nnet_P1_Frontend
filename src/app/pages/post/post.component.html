@@ -1,4 +1,106 @@
 <div class="card-container">
-<app-sidebar></app-sidebar>
 
-</div>
+    <!-- left-card -->
+    <app-sidebar></app-sidebar>
+    
+    <div class="box card-wrapper_2">
+        
+            <!-- Your form fields go here -->
+            <mat-card>  
+            <form [formGroup]="postForm" (ngSubmit)="submitForm()">
+            <mat-card-header class="pr-10">
+                <mat-card-title-group><mat-card-title class="text-blue-700"><mat-icon class="pt-1 tex"> post </mat-icon> Whats on your mind? . . . .</mat-card-title> </mat-card-title-group>
+            </mat-card-header>
+            <br><br>
+    
+          <mat-card-subtitle class="pl-10" > </mat-card-subtitle> 
+          <mat-card-title class="pl-10 text-center"> </mat-card-title>
+          
+          <mat-card-content>
+            <div class="post-description">
+                <label class="flex flex-col">
+                    Title:
+                    <textarea class="bg-slate-200 px-5 py-2 rounded-md shadow-xl transition focus:ease-out focus:scale-100 duration-300" 
+                    placeholder="Add a title . . . " 
+                    formControlName="title"></textarea>
+                    <ng-container *ngIf="postForm.controls['title']?.errors">
+                        <small class="text-red-800" *ngIf="postForm.controls['title']?.touched"> Title can not be empty </small>
+                    </ng-container>
+                </label>
+                <br>
+                <br>
+
+                <label class="flex flex-col">
+                    Description:
+                    <textarea class="bg-slate-200 px-5 py-8 rounded-md shadow-xl transition focus:ease-out focus:scale-100 duration-300" 
+                    placeholder="Add a brief description here . . . " 
+                    formControlName="description"></textarea>
+                    <ng-container *ngIf="postForm.controls['description']?.errors">
+                        <small class="text-red-800 mt-3" *ngIf="postForm.controls['description']?.touched"> Description can not be empty </small>
+                    </ng-container>
+                </label>
+
+                <br> <br>
+                <mat-card-subtitle class="w-80">
+                    <label class="flex flex-col">
+                        location:
+                        <input class="bg-slate-200 px-5 py-2 rounded-md shadow-xl transition focus:ease-out focus:scale-100 duration-300" type="text" 
+                        placeholder="Add brief location detail here . . . " formControlName="location"> 
+                    </label>
+                    <!-- <ng-container *ngIf="postForm.controls['title']?.errors">
+                        <small class="text-red-800" *ngIf="postForm.controls['title']?.touched"> Title can not be empty </small>
+                    </ng-container> -->
+                    <br>
+                    <br>
+                    <label class="flex flex-col">
+                        Contact info:
+                        <input class="bg-slate-200 px-7 py-2 rounded-md shadow-xl transition focus:ease-out focus:scale-100 duration-300" type="text" 
+                        placeholder="Add contact detail here . . . " formControlName="contact"> 
+                    </label>
+                    <br>
+                    <br>
+                  </mat-card-subtitle>
+            </div>
+          </mat-card-content>
+            </form>
+
+            <mat-card-actions class="button">
+                <mat-card-content class="button justify-between ml-10">
+                    <button [matMenuTriggerFor]="menu" class="filter-menu bg- px-5 py-2 rounded-md shadow-xl transition focus:ease-out focus:scale-100 duration-300">
+                        {{ postForm.controls['category'].value ? postForm.controls['category'].value : 'Category' }}
+                      </button>                      
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item (click)="setCategory('Event')">Event</button>
+                      <button mat-menu-item (click)="setCategory('Lost and Found')">Lost and Found</button>
+                      <button mat-menu-item (click)="setCategory('Business')">Business</button>
+                      <button mat-menu-item (click)="setCategory('Alert')">Alert</button>
+                      <button mat-menu-item (click)="setCategory('Volunteering')">Volunteering</button>
+                      <button mat-menu-item (click)="setCategory('News')">News</button>
+                      <button mat-menu-item (click)="setCategory('Handy Man')">Handy Man</button>
+                      <button mat-menu-item (click)="setCategory('Other')">Other</button>
+                    </mat-menu>
+                  
+                    <ng-container *ngIf="postForm.controls['category']?.errors">
+                      <small class="text-red-800" *ngIf="postForm.controls['category']?.touched">Category must be selected</small>
+                    </ng-container>
+                  </mat-card-content>
+                </mat-card-actions>
+                <br> <hr> <hr><hr><hr><hr><hr><hr><hr><hr><hr>
+
+            </mat-card>
+            
+            <mat-card-actions class="button justify-end mt-5 mr-10">
+            <button type="submit" class="post-button bg-green-600 px-7 py-2 text-white rounded-md shadow-xl transition ease-out hover:scale-110 duration-300" (click)="submitForm()">Post</button>
+        </mat-card-actions> 
+        
+      </div>
+    
+    
+    <!-- right card -->
+    <div class="box card-wrapper_3">
+      <mat-card>
+        
+      </mat-card>
+    </div>
+  </div>
+  

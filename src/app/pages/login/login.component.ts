@@ -63,10 +63,15 @@ export class LoginComponent implements OnInit{
             }
           },
           error: (error) => {
-            this.toster.error(error.error.message);
-            alert(error.error.message);
-            
-          }
+            const errorMessage = error.error.message;
+            if (errorMessage === undefined) {
+              this.toster.error('Connection Problem');
+              alert('Connection Problem');
+            } else {
+              this.toster.error(errorMessage);
+              alert(errorMessage);
+            }
+          }          
         });
   }
 }

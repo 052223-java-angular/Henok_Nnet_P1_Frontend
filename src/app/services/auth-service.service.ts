@@ -11,6 +11,8 @@ import { AllHoods } from '../models/Hoods';
 import { AllUsers } from '../models/AllUsers';
 import { UserPayload } from '../models/UserPayload';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { PostPayload } from '../models/Post';
 
 
 
@@ -21,9 +23,9 @@ export class AuthServiceService {
 
   baseUrl = 'http://nnet-1-env.eba-sadmddsb.us-east-1.elasticbeanstalk.com/nnet/api';  
   // baseUrl = environment.apibaseUrl;
-  
+  // baseUrl = 'http://localhost:8080/nnet/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   register(payload: RegisterPayload): Observable<void>{
     return this.http.post<void>(`${this.baseUrl}/auth/register`, payload);
@@ -87,7 +89,27 @@ export class AuthServiceService {
   
     return this.http.put<void>(url, payload, { headers: headers });
   }
+
+  createPost(payload: PostPayload): Observable<void> {
+    const headers = new HttpHeaders().set('auth-token', `${this.token}`);
+    const url = `${this.baseUrl}/posts/add`;
+  
+    return this.http.post<void>(url, payload, { headers: headers });
+  }
   
   
   
+
+
+
+
+
+
+
+
+  logout(): void {
+    sessionStorage.clear();
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
 }
