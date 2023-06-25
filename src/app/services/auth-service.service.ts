@@ -23,8 +23,8 @@ import { DeletePayload } from '../models/DeletePayload';
 })
 export class AuthServiceService {
  
-  // baseUrl = environment.apibaseUrl;
-  baseUrl = 'http://localhost:8080/nnet/api';
+  baseUrl = environment.apibaseUrl;
+  // baseUrl = 'http://localhost:8080/nnet/api';
 
   constructor(private http: HttpClient, private router: Router) { }
 
