@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 
@@ -28,11 +29,35 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class SidebarComponent {
   userRole!: string;
 
-  constructor() {}
+  constructor(private MatButtonModule: MatButtonModule, 
+    private MatCardModule: MatCardModule,
+    private MatIconModule: MatIconModule,
+    private MatMenuModule: MatMenuModule,
+    private ScrollingModule: ScrollingModule,
+    private CommonModule: CommonModule,
+    private MatFormFieldModule: MatFormFieldModule,
+    private FormsModule: FormsModule,
+    private router:Router,
+    private authService: AuthServiceService) {}
 
-  // ngOnInit(): void {
-  //   // Assuming you have a method in your authentication service to retrieve the user's role
-  //   this.userRole = this.userRole = localStorage.getItem('userRole') || '';
-  //   console.log(this.userRole);
-  // }
+    homeButtonClick(): void {
+      this.router.navigate(['/']); 
+    }
+
+    feedButtonClick(): void {
+      this.router.navigate(['/feed']);
+    }
+
+    postButtonClick(): void {
+      this.router.navigate(['/post']); 
+    }
+
+    profileButtonClick(): void {
+      this.router.navigate(['/profile']); 
+    }
+    
+    logoutButtonClick(): void {
+      this.authService.logout();
+      this.router.navigate(['/']); 
+    } 
 }

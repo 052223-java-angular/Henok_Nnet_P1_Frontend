@@ -4,6 +4,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-admin',
@@ -18,7 +19,7 @@ export class AdminComponent implements OnInit {
 
   allHoods: AllHoods[] = [];
 
-  constructor(private authService: AuthServiceService) {}
+  constructor(private authService: AuthServiceService, private router:Router) {}
 
   ngOnInit(): void {
     this.fetchAllHoods();
@@ -38,5 +39,9 @@ export class AdminComponent implements OnInit {
         console.log(e);
       }
     });
+  }
+
+  manageButtonClick(): void {
+    this.router.navigate(['/manage']); 
   }
 }
