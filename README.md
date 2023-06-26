@@ -52,7 +52,7 @@ Users will be able to report suspicious activities, request assistance,find lost
 - **Spring Framework**: a java framework to handle the restful nature of the web.
 - **Hibernate**: object–relational mapping tool for the Java programming language
 - **Angular**: open-source single-page web application framework to build the frontend of the web-app.
-- **zippopotam**: External Api to get Information of user location based on zipcode
+- **Geolocation**: External Api to get Information of user location based on zipcode
 - **PostgreSQL**: Used as the database to store user, product, and order data.
 - **Maven**: Used for managing project dependencies.
 - **JUnit**: A testing framework for Java applications, used to ensure our code works as expected.
