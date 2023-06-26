@@ -1,1 +1,77 @@
-<p>profile works!</p>
+<div class="card-container">
+    <!-- left-card -->
+    <app-sidebar></app-sidebar>
+  
+    <div class="box card-wrapper_2">
+      <mat-card class="table-card">
+        <mat-card-content>
+          <table>
+            <thead>
+              <tr>
+                <th class="table-header">Id</th>
+                <th class="table-header">Name</th>
+                <th class="table-header">Role</th>
+                <th class="table-header">Email</th>
+                <th class="table-header">Date Joined</th>
+                <th class="table-header">Neighborhood Name</th>
+                <th class="table-header">Zip Code</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ updateUser.id }}</td>
+                <td>{{ updateUser.username }}</td>
+                <td>{{ updateUser.role }}</td>
+                <td>{{ updateUser.email }}</td>
+                <td>{{ updateUser.dateCreated }}</td>
+                <td>{{ updateUser.neighborhoodName }}</td>
+                <td>{{ updateUser.zipcode }}</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-card-content>
+      </mat-card>
+  
+      <br><br>
+  
+      <mat-card-content class="w-80 ml-10">
+        <label class="flex flex-col">
+          Edit User Name:
+          <input class="bg-slate-200 px-5 py-2 rounded-md shadow-xl transition focus:ease-out focus:scale-100 duration-300"
+            type="text" placeholder="Add new name here . . . " [(ngModel)]="username" name="username">
+        </label>
+  
+        <br>
+        <br>
+        <label class="flex flex-col">
+          Edit Email:
+          <input class="bg-slate-200 px-7 py-2 rounded-md shadow-xl transition focus:ease-out focus:scale-100 duration-300"
+            type="email" placeholder="Add your Email here . . . " [(ngModel)]="email" name="email">
+        </label>
+        <br>
+        <br>
+        <label class="flex flex-col">
+          Edit Neighborhood Name:
+          <input class="bg-slate-200 px-5 py-2 rounded-md shadow-xl transition focus:ease-out focus:scale-100 duration-300"
+            type="text" placeholder="Add Neighborhood Name here . . . " [(ngModel)]="neighborhood" name="neighborhood">
+        </label>
+        <br>
+        <br>
+        <label class="flex flex-col">
+          Edit Zip Code:
+          <input class="bg-slate-200 px-7 py-2 rounded-md shadow-xl transition focus:ease-out focus:scale-100 duration-300"
+            type="text" placeholder="Add Zip code here . . . " [(ngModel)]="zipCode" name="zipCode">
+        </label>
+        <br>
+        <br>
+
+        <mat-card-actions class="button justify-end mt-5 mr-10">
+            <button type="submit" class="post-button bg-green-500 px-7 py-2 text-white rounded-md shadow-xl transition ease-out hover:scale-110 duration-300" (click)="updateProfile()">Save</button>
+        </mat-card-actions>
+
+
+      </mat-card-content>
+    </div>
+  </div>
+  

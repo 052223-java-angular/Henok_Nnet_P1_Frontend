@@ -1,5 +1,5 @@
 export interface CommentPayload{
-    commentId: string;
+    commentId: String;
     userId: string;
     username: string;
     comment: string;
