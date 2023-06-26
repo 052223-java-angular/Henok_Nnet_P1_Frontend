@@ -18,6 +18,7 @@ import { DeletePayload } from '../models/DeletePayload';
 import { UpdateUser } from '../models/Update-User';
 import { UpdateUserPayload } from '../models/UserUpdatePayload';
 import { FilterFeed } from '../models/Filter-Feed';
+import { DeleteComment } from '../models/Delete-Comment';
 
 
 
@@ -115,7 +116,7 @@ export class AuthServiceService {
     return this.http.delete<void>(url, { headers: headers, body: payload });
   }
 
-  deleteComment(payload: DeletePayload): Observable<void> {
+  deleteComment(payload: DeleteComment): Observable<void> {
     const headers = new HttpHeaders().set('auth-token', `${this.token}`);
     const url = `${this.baseUrl}/posts/deletecomment`;
     
