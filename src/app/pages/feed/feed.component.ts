@@ -149,7 +149,7 @@ export class FeedComponent implements OnInit {
     this.authService.submitComment(payload).subscribe({
       next: resp => {
         this.toaster.success('commented successfully!!');
-        // window.location.reload();
+        window.location.reload();
       },
       error: e => {
         alert("can not comment here!")
