@@ -84,7 +84,7 @@
                   {{comments.comment}}
                 </div>
                 <button mat-icon-button *ngIf="comments.username === currentUser || post.user_name === currentUser || currentUserRole === 'ADMIN'"
-                        (click)="deleteComment(comments.commentId)">
+                        (click)="deleteComment(comments)">                        
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>

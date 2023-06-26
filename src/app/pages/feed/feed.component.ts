@@ -17,6 +17,7 @@ import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 import { UserName } from 'src/app/models/UserName';
 import { DeletePayload } from 'src/app/models/DeletePayload';
 import { FilterFeed } from 'src/app/models/Filter-Feed';
+import { DeleteComment } from 'src/app/models/Delete-Comment';
 
 @Component({
     selector: 'app-feed',
@@ -175,14 +176,17 @@ export class FeedComponent implements OnInit {
     
   });
 }
+ 
 
-
-deleteComment(commentId: String) {
+deleteComment(comment: CommentPayload) {
   console.log("here"),
-  console.log(commentId );
-  const payload : DeletePayload = {
-    postId: '',
-    commentId: commentId,
+  console.log(comment.comment );
+  const payload : DeleteComment = {
+    comment : comment.comment,
+    username : comment.username,
+    like: comment.like,
+    userId: comment.userId,
+    
   } 
 this.authService.deleteComment(payload).subscribe({
   next: resp => {
