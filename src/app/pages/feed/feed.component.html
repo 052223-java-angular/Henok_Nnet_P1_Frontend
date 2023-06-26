@@ -19,16 +19,16 @@
 
   <div class="box card-wrapper_2">
     <button mat-button [matMenuTriggerFor]="menu" class="filter-menu"> Filter</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>Event</button>
-          <button mat-menu-item>Lost and Found</button>
-          <button mat-menu-item>New Business</button>
-          <button mat-menu-item>Alert </button>
-          <button mat-menu-item>Volenteering</button>
-          <button mat-menu-item>News </button>
-          <button mat-menu-item>Handy Man  </button>
-          <button mat-menu-item>Other  </button>
-        </mat-menu>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="selectCategory('Event')">Event</button>
+        <button mat-menu-item (click)="selectCategory('Lost and Found')">Lost and Found</button>
+        <button mat-menu-item (click)="selectCategory('Business')">Business</button>
+        <button mat-menu-item (click)="selectCategory('Alert')">Alert</button>
+        <button mat-menu-item (click)="selectCategory('Volunteering')">Volunteering</button>
+        <button mat-menu-item (click)="selectCategory('News')">News</button>
+        <button mat-menu-item (click)="selectCategory('Handy Man')">Handy Man</button>
+        <button mat-menu-item (click)="selectCategory('Other')">Other</button>
+      </mat-menu>
 
         <!-- <ng-container *ngIf="feedPayload.length === 0">
           <div class="no-posts-message">
@@ -129,3 +129,5 @@
     </mat-card>
   </div>
 </div>
+
+

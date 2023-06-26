@@ -1,0 +1,166 @@
+
+.table-wrapper {
+    overflow-x: auto;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+    
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+  .card-wrapper_1 {
+    flex: relative ;
+    width: 10%;
+    /* margin-right: 10px; */
+    margin-left: 80px;
+    
+  }
+  
+  .card-wrapper_2 {
+    flex: relative ;
+    width: 80%;
+    margin-right: 20px;
+    margin-left: 60px;
+  }
+  
+  .card-wrapper_3 {
+    flex: relative ;
+    width: 45%;
+    margin-right: 20px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    justify-content: right;
+  }
+
+  .card-content{
+    height: 0px; 
+    overflow-y: auto;
+  }
+
+  .comments {
+    margin-left: 10%;
+    height: 150px;
+    width: 85%;
+    
+  }
+
+  .filter-menu{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+.textarea-1{
+  flex: relative;
+  margin-top: 10px;
+  width: 80%;
+  height: 30px;
+  margin-right: 20px;
+  margin-left: 60px;
+
+}
+
+
+/* side nav */
+
+.side-nav {
+  display: flex;
+  padding-left: 40px;
+  font-size: medium;
+  padding-top: 20px;
+  background-color: #f2f2f2;
+  width: 250px;
+  height: 10%;
+  /* position: fixed; */
+  left: 10px;
+  top: 100px;
+}
+
+.side-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-nav li {
+  padding: 10px;
+}
+
+.side-nav li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.side-nav li a:hover {
+  color: #555;
+}
+
+
+.table-header {
+  padding: 10px;
+  margin-right: 10px; 
+  background-color: #e0e0e0; 
+  color: #333; 
+  font-weight: bold; 
+}
+
+.table-card {
+  display: inline-block;
+  width: 96%; 
+  margin: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  background-color: #e0e0e0;
+  color: #333; 
+  font-weight: bold;
+}
+
+.delete-button {
+    padding: 6px 12px;
+    background-color: #ff5555;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .delete-button:hover {
+    background-color: #ff0000;
+  }
+
+  .promote-button {
+    padding-left: 2px;
+    padding: 6px 12px;
+    background-color: #dcc834;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .promote-button:hover {
+    background-color: #dcc834;
+  }

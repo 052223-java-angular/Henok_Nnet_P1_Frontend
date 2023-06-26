@@ -15,6 +15,9 @@ import { Router } from '@angular/router';
 import { PostPayload } from '../models/Post';
 import { UserName } from '../models/UserName';
 import { DeletePayload } from '../models/DeletePayload';
+import { UpdateUser } from '../models/Update-User';
+import { UpdateUserPayload } from '../models/UserUpdatePayload';
+import { FilterFeed } from '../models/Filter-Feed';
 
 
 
@@ -118,10 +121,44 @@ export class AuthServiceService {
     
     return this.http.delete<void>(url, { headers: headers, body: payload });
   }
+
+
+  getUserProfile():  Observable<UpdateUser>{
+    const headers = new HttpHeaders().set('auth-token', `${this.token}`);
+    const url = `${this.baseUrl}/user/profile`;
+
+    return this.http.get<UpdateUser>(url, { headers: headers });
+  }
+
+
+  updateUserProfile(payload: UpdateUserPayload): Observable<void> {
+    const headers = new HttpHeaders().set('auth-token', `${this.token}`);
+    const url = `${this.baseUrl}/user/update`;
   
+    return this.http.put<void>(url, payload, { headers: headers });
+  }
   
+
+  // getPostsByCategory(payload: string): Observable<FeedPayload> {
+  //   const headers = new HttpHeaders().set('auth-token', `${this.token}`);
+  //   const url = `${this.baseUrl}/user/filter`;
   
+  //   return this.http.put<FeedPayload>(url, payload, { headers: headers });
+  // }
   
+  // getPostsByCategory(payload: string): Observable<FeedPayload> {
+  //   const headers = new HttpHeaders().set('auth-token', this.token);
+  //   const url = `${this.baseUrl}/user/filter`;
+
+  //   return this.http.put<FeedPayload>(url, payload, { headers });
+  // }
+  
+  getPostsByCategory(payload: FilterFeed): Observable<FeedPayload> {
+    const headers = new HttpHeaders().set('auth-token', this.token);
+    const url = `${this.baseUrl}/user/filter`;
+
+    return this.http.put<FeedPayload>(url, payload, { headers: headers });
+  }
   
 
 

@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 import { UserName } from 'src/app/models/UserName';
 import { DeletePayload } from 'src/app/models/DeletePayload';
+import { FilterFeed } from 'src/app/models/Filter-Feed';
 
 @Component({
     selector: 'app-feed',
@@ -45,6 +46,12 @@ export class FeedComponent implements OnInit {
   addComment!: AddComment;
   currentUser!: String;
   currentUserRole!: String;
+  filterFeed!: FilterFeed;
+  // filterFeed: FilterFeed = {
+    // category: ''
+  // };
+
+  selectedCategory!: string;
 
   constructor(
     private authService: AuthServiceService,
@@ -66,8 +73,56 @@ export class FeedComponent implements OnInit {
       }
     );
   }
-   
 
+  // selectCategory(category: string): void {
+  //   this.filterFeed.category = category; //this might scream
+  //   if (category === null) {
+  //     this.getFeedPayload();
+  //   } else {
+  //     this.getPostsByCategory();
+  //   }
+  // }
+  
+  selectCategory(category: string): void {
+    // this.selectedCategory = category;
+    this.filterFeed.category = category;
+    this.getPostsByCategory();
+  }
+  
+  // getPostsByCategory(): void {
+  //   this.authService.getPostsByCategory(this.filterFeed).subscribe({
+  //     next: (resp: any) => {
+  //       console.log(resp);
+  //       if (Array.isArray(resp)) {
+  //         this.feedPayload = resp;
+  //       } else {
+  //         this.feedPayload = [resp];
+  //       }
+  //     },
+  //     error: (e: any) => {
+  //       console.log(e);
+  //     }
+  //   });
+  // }
+  getPostsByCategory(): void {
+    this.authService.getPostsByCategory(this.filterFeed).subscribe({
+      next: (resp: any) => {
+        console.log(resp);
+        if (Array.isArray(resp)) {
+          this.feedPayload = resp;
+        } else {
+          this.feedPayload = [resp];
+        }
+      },
+      error: (e: any) => {
+        console.log(e);
+      }
+    });
+  }
+  
+  
+ 
+  
   getFeedPayload(): void {
     this.authService.feed().subscribe({
       next: resp => {
@@ -79,7 +134,7 @@ export class FeedComponent implements OnInit {
         }
       },
       error: e => {
-        console.log(e);
+        console.log(e.error.message);
       }
     });
   }
@@ -102,23 +157,6 @@ export class FeedComponent implements OnInit {
     this.commentText = '';
   }
 
-  deleteComment(commentId: string) {
-    const payload : DeletePayload = {
-      postId: '',
-      commentId: commentId,
-    } 
-  this.authService.deleteComment(payload).subscribe({
-    next: resp => {
-      alert("Deleted Successfully");
-      this.toaster.success('deleted successfully!!');
-      window.location.reload();
-    },
-    error: e => {
-      alert("can not delete this!")
-    }
-  });
-}
-
 
   deletePost(postId: string) {
     const payload : DeletePayload = {
@@ -137,4 +175,28 @@ export class FeedComponent implements OnInit {
     
   });
 }
+
+
+deleteComment(commentId: String) {
+  console.log("here"),
+  console.log(commentId );
+  const payload : DeletePayload = {
+    postId: '',
+    commentId: commentId,
+  } 
+this.authService.deleteComment(payload).subscribe({
+  next: resp => {
+    alert("Deleted Successfully");
+    this.toaster.success('deleted successfully!!');
+    window.location.reload();
+  },
+  error: e => {
+    alert("can not delete this!")
+  }
+});
 }
+}
+
+
+
+
